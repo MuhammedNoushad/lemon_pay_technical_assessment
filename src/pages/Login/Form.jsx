@@ -3,7 +3,7 @@ import TextInput from "../../components/textInput";
 
 const Form = ({ config, formFor, toggleForm }) => {
   return (
-    <form>
+    <form className="md:w-[80%]">
       {config.map((input) => (
         <div key={input.id} className="mb-4">
           <TextInput input={input} />
@@ -19,7 +19,7 @@ const Form = ({ config, formFor, toggleForm }) => {
           />
           <label
             htmlFor="remember-me"
-            className="ml-2 font-poppins text-[12px] font-normal text-white"
+            className="ml-2 font-poppins text-[16px] leading-3 font-normal text-white"
           >
             Remember me
           </label>
@@ -28,7 +28,7 @@ const Form = ({ config, formFor, toggleForm }) => {
         <button
           type="button"
           onClick={toggleForm}
-          className="font-poppins text-[12px] no-underline text-white"
+          className="font-poppins text-[16px] leading-3 no-underline text-white"
         >
           {formFor === "login" ? "Sign Up" : "Sign In"}
         </button>
