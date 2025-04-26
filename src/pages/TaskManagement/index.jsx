@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import BackIcon from "../../icons/BackIcon";
 import ForwardIcon from "../../icons/ForwardIcon";
 import TaskModal from "../../components/Modal";
+import Pagination from "../../components/pagination";
 
 const tasks = [
   {
@@ -117,9 +118,9 @@ const TaskManagement = () => {
 
         {/* Desktop view (Table) */}
         <div className="hidden md:block">
-          <table className="min-w-full table-auto border">
+          <table className="min-w-full table-auto border-separate border-spacing-y-12 border-spacing-x-0">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="bg-gray-100 text-blue-700 font-nunito font-medium leading-[136%]">
                 <th className="px-4 py-2 border">No</th>
                 <th className="px-4 py-2 border">Date & Time</th>
                 <th className="px-4 py-2 border">Task</th>
@@ -129,18 +130,44 @@ const TaskManagement = () => {
             </thead>
             <tbody>
               {tasks.map((task, index) => (
-                <tr key={task.id} className="text-center">
-                  <td className="px-4 py-2 border">{index + 1}</td>
+                <tr
+                  key={task.id}
+                  className="text-center font-nunito font-medium leading-[136%] bg-white shadow border border-gray-200 rounded"
+                >
+                  <td className="px-4 py-2 border-l-2 border-gray-400">
+                    {index + 1}
+                  </td>
                   <td className="px-4 py-2 border">{task.dateTime}</td>
                   <td className="px-4 py-2 border">{task.title}</td>
                   <td className="px-4 py-2 border">{task.description}</td>
-                  <td className="px-4 py-2 border">
-                    <button className="text-gray-500">⋮</button>
+                  <td className="px-4 py-2 border relative">
+                    <button
+                      onClick={() =>
+                        setOpenId(openId === task.id ? null : task.id)
+                      }
+                      className="text-gray-500"
+                    >
+                      ⋮
+                    </button>
+
+                    {/* Dropdown */}
+                    {openId === task.id && (
+                      <div className="absolute right-0 top-full mt-2 w-32 bg-white border rounded-md shadow-lg z-10">
+                        <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                          Edit
+                        </button>
+                        <button className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100">
+                          Delete
+                        </button>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+
+          <Pagination totalPages={6} />
         </div>
       </div>
 

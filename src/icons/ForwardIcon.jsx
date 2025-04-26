@@ -1,13 +1,15 @@
 import React from "react";
 
-const ForwardIcon = () => {
+const ForwardIcon = ({ onClick }) => {
   return (
     <svg
+      onClick={onClick}
       width="13"
       height="24"
       viewBox="0 0 13 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="cursor-pointer"
     >
       <path
         fill-rule="evenodd"
