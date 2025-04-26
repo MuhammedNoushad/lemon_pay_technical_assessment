@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import TaskManagement from "./pages/TaskManagement";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/task-management" element={<TaskManagement />} />
       </Routes>
     </Router>
   );
