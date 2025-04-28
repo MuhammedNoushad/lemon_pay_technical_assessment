@@ -1,9 +1,9 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Form from "./Form";
 import { toast } from "react-toastify";
+import axiosInstance from "../../axios/axiosInstance";
 
 const Login = () => {
   const [formFor, setFormFor] = useState("login");
@@ -58,7 +58,6 @@ const Login = () => {
         ];
 
   const handleFormToggle = () => {
-    console.log("Form toggled");
     setFormFor((prev) => (prev === "login" ? "signup" : "login"));
   };
 
@@ -99,17 +98,23 @@ const Login = () => {
       }
 
       if (formFor === "login") {
-        await axios.post("http://localhost:3000/login", {
+        const response = await axiosInstance.post("/login", {
           email,
           password,
         });
+
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+
+        console.log(token, "token");
+
         navigate("/task-management");
         toast.success("Login successful!", {
           position: "top-right",
           autoClose: 2000,
         });
       } else if (formFor === "signup") {
-        axios.post("http://localhost:3000/signup", {
+        axiosInstance.post("/signup", {
           email,
           password,
         });
@@ -120,6 +125,7 @@ const Login = () => {
         });
       }
     } catch (error) {
+      console.log(error, "error");
       toast.error("Invalid credentials. Please try again.", {
         position: "top-right",
         autoClose: 2000,
