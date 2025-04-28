@@ -1,30 +1,27 @@
-import { useState } from "react";
 import BackIcon from "../../icons/BackIcon";
 import ForwardIcon from "../../icons/ForwardIcon";
 
-const Pagination = ({ totalPages }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-
+const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const handlePageClick = (page) => {
-    setCurrentPage(page);
+    onPageChange(page);
   };
 
   const handlePrev = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      onPageChange(currentPage - 1);
     }
   };
 
   const handleNext = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+      onPageChange(currentPage + 1);
     }
   };
 
   return (
     <div className="flex items-center justify-center gap-4 mt-6">
       {/* Left Arrow */}
-      <BackIcon onClick={handlePrev} />
+      <BackIcon onClick={handlePrev} className="cursor-pointer" />
 
       {/* Page Numbers */}
       <div className="flex items-center gap-3 mx-16">
@@ -44,7 +41,7 @@ const Pagination = ({ totalPages }) => {
       </div>
 
       {/* Right Arrow */}
-      <ForwardIcon onClick={handleNext} />
+      <ForwardIcon onClick={handleNext} className="cursor-pointer" />
     </div>
   );
 };
