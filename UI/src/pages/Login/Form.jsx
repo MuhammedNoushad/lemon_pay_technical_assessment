@@ -1,5 +1,5 @@
 import React from "react";
-import TextInput from "../../components/textInput";
+import TextInput from "../../components/TextInput";
 
 const Form = ({ config, formFor, toggleForm, handleFormSubmit }) => {
   return (
