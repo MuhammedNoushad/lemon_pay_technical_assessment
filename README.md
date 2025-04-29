@@ -29,8 +29,6 @@ Welcome to **LemonPay Task Management System**, a simple and responsive task tra
 
 ![Task Page Mobile](https://imgur.com/sB7Bddg.png)
 
-> *(Update `./assets/...` paths with actual image paths in your repo)*
-
 ---
 
 ## 🛠 Tech Stack
@@ -52,6 +50,7 @@ Welcome to **LemonPay Task Management System**, a simple and responsive task tra
 
 ## 📦 Getting Started Locally
 
+```bash
 git clone https://github.com/MuhammedNoushad/lemon_pay_technical_assessment_UI.git
 cd lemon_pay_technical_assessment_UI
 npm install
