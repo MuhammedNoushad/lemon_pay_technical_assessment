@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BackIcon from "../../icons/BackIcon";
 import ForwardIcon from "../../icons/ForwardIcon";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/pagination";
 import axiosInstance from "../../axios/axiosInstance";
 import { toast } from "react-toastify";
 import formatToIndianDate from "../../../util/formateDate";
